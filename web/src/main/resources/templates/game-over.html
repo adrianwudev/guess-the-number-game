@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Number Game</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Guess the Number Game</h1>
+        <h3>Game Over</h3>
+
+
+        <h3>
+            <a th:with="RESTART=${T(academy.learnprogramming.util.GameMappings).RESTART}"
+               th:href="@{__${RESTART}__}">
+                Play Again
+            </a>
+        </h3>
+
+
+        <h3 th:with="RESULT_MESSAGE=${T(academy.learnprogramming.util.AttributeNames).RESULT_MESSAGE}"
+            th:text="${__${RESULT_MESSAGE}__}">
+        </h3>
+
+
+        <h3>
+            <a th:with="HOME=${T(academy.learnprogramming.util.GameMappings).HOME}"
+               th:href="@{__${HOME}__}">
+                Home
+            </a>
+        </h3>
+
+
+        <footer>
+            <p>Create by Ad learn</p>
+        </footer>
+    </div>
+</body>
+</html>
