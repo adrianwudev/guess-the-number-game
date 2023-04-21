@@ -1,6 +1,7 @@
 <thlogic>
   <attr sel="#headId"
         th:replace="~{fragments/head :: headFragment}"/>
+  <attr sel="#game-title" th:text="#{game.title}"/>
   <attr sel="#main-message"
         th:with="MAIN_MESSAGE=${T(academy.learnprogramming.util.AttributeNames).MAIN_MESSAGE}"
         th:text="${__${MAIN_MESSAGE}__}"/>
@@ -10,6 +11,8 @@
   <attr sel="#game-form"
         th:with="PLAY=${T(academy.learnprogramming.util.GameMappings).PLAY}"
         th:action="@{__${PLAY}__}"/>
+  <attr sel="#enter-guess" th:text="#{game.enter.guess}"/>
+  <attr sel="#submit" th:value="#{game.submit}"/>
   <attr sel="#footerId"
         th:replace="~{fragments/footer :: footerFragment}"/>
 </thlogic>
