@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.FixedLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.util.Locale;
 
@@ -20,11 +22,17 @@ public class WebConfig implements WebMvcConfigurer {
     }
     @Bean
     public LocaleResolver localeResolver(){
-        return new FixedLocaleResolver(new Locale("es", "ES"));
+//        return new FixedLocaleResolver(new Locale("es", "ES"));
+        return new SessionLocaleResolver();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new RequestInterceptor());
+
+        LocaleChangeInterceptor localeChangeInterceptor =
+                new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("lang"); // default paraName is locale
+        registry.addInterceptor(localeChangeInterceptor);
     }
 }
